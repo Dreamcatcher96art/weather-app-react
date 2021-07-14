@@ -11,16 +11,16 @@ return(
                     <input type="search" className="form-control"/>
                 </div>
                 <div className="col-3">
-                    <input type="Submit" value="search" className="btn btn-primary"/>
+                    <input type="Submit" value="Search" className="btn btn-primary"/>
                 </div>
             </div>
         </form>
-        <h1>City</h1>
+        <h1 className="city">City<span className="country"><small>Country</small></span></h1>
         <ul>
-            <li>
+            <li className="date" id="date">
                 Date
             </li>
-            <li>
+            <li className="description" id="description">
                 Weather
             </li>
         </ul>
