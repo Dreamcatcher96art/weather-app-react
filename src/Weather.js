@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./Weather.css";
+import Date from "./date";
 import axios from "axios";
-
-
 
 
 
@@ -19,7 +18,8 @@ setWeather({
     city:response.data.name,
     country:response.data.sys.country,
     icon:response.data.weather[0].icon,
-    descriptione:response.data.weather[0].description
+    descriptione:response.data.weather[0].description,
+    date:new Date(response.data.dt*1000)
 })
 setReady(true)
 }
@@ -41,7 +41,7 @@ return(
         <h1 className="city">{weather.city}<span className="country"><small>({weather.country})</small></span></h1>
         <ul>
             <li className="date" id="date">
-                Date
+               <Date date={weather.data.dt*1000}/>
             </li>
             <li className="text-capitalize" id="description">
                 {weather.descriptione}
