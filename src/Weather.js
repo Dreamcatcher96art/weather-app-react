@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Weather.css";
+import axios from "axios";
+
+
+
+
 
 export default function Weather(){
+const[ready, setReady] = useState(false)
+const [weather, setWeather] = useState({});
+function handleResponse(response){
+console.log(response.data)
+setWeather({
+    temperature:response.data.main.temp,
+    wind:response.data.wind.speed,
+    pressure:response.data.main.pressure,
+    hummidity:response.data.main.humidity,
+    city:response.data.name,
+    country:response.data.sys.country,
+    icon:response.data.weather[0].icon,
+    descriptione:response.data.weather[0].description
+})
+setReady(true)
+}
+
+if(ready){
 return(
     <div className="Weather">
         
@@ -15,35 +38,39 @@ return(
                 </div>
             </div>
         </form>
-        <h1 className="city">City<span className="country"><small>Country</small></span></h1>
+        <h1 className="city">{weather.city}<span className="country"><small>({weather.country})</small></span></h1>
         <ul>
             <li className="date" id="date">
                 Date
             </li>
-            <li className="description" id="description">
-                Weather
+            <li className="text-capitalize" id="description">
+                {weather.descriptione}
             </li>
         </ul>
         <div className="row">
             <div className="col-6">
-                <img src="" alt=""/> 6C
+                <img src={weather.icon} alt=""/> {Math.round(weather.temperature)}C
             </div>
             <div className="col-6">
                 <ul>
                     <li>
-                        Precipitation: 15%
+                        Pressure: {weather.pressure}%
                     </li>
                     <li>
-                        Humidity: 80%
+                        Humidity: {weather.hummidity}%
                     </li>
                     <li>
-                        Wind Speed: 80 k/h
+                        Wind Speed: {Math.round(weather.wind)}k/h
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-    
-
-)
+)}else{
+    const apiKey = "97a9745b0c3a1f932357060a2331ab49";
+    let city = "Gdynia"
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+    return"Loading..."
+}
 }
