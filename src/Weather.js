@@ -41,7 +41,7 @@ return(
         <h1 className="city">{weather.city}<span className="country"><small>({weather.country})</small></span></h1>
         <ul>
             <li className="date" id="date">
-               <Date date={weather.data.dt*1000}/>
+              <Date date={weather.date}/>
             </li>
             <li className="text-capitalize" id="description">
                 {weather.descriptione}
