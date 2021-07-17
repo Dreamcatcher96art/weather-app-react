@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Weather.css";
-import Time from "./weatherTime"
+import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
 
 
@@ -38,33 +38,7 @@ return(
                 </div>
             </div>
         </form>
-        <h1 className="city">{weather.city}<span className="country"><small>({weather.country})</small></span></h1>
-        <ul>
-            <li className="date" id="date">
-                <Time date={weather.date}/>
-            </li>
-            <li className="text-capitalize" id="description">
-                {weather.descriptione}
-            </li>
-        </ul>
-        <div className="row">
-            <div className="col-6">
-                <img src={weather.icon} alt=""/> {Math.round(weather.temperature)}C
-            </div>
-            <div className="col-6">
-                <ul>
-                    <li>
-                        Pressure: {weather.pressure}%
-                    </li>
-                    <li>
-                        Humidity: {weather.hummidity}%
-                    </li>
-                    <li>
-                        Wind Speed: {Math.round(weather.wind)}k/h
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <WeatherInfo data={weather}/>
     </div>
 )}else{
     const apiKey = "97a9745b0c3a1f932357060a2331ab49";
