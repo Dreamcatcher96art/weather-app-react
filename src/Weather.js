@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Weather.css";
-import Date from "./date";
+import Time from "./weatherTime"
 import axios from "axios";
 
 
@@ -41,7 +41,7 @@ return(
         <h1 className="city">{weather.city}<span className="country"><small>({weather.country})</small></span></h1>
         <ul>
             <li className="date" id="date">
-              <Date date={weather.date}/>
+                <Time date={weather.date}/>
             </li>
             <li className="text-capitalize" id="description">
                 {weather.descriptione}
