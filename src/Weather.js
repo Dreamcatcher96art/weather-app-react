@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Weather.css";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 import axios from "axios";
 
 
@@ -11,6 +12,7 @@ const [weather, setWeather] = useState({ready: false });
 
 
 function handleResponse(response){
+    console.log(response.data)
 setWeather({
     ready: true,
     temperature:response.data.main.temp,
@@ -21,7 +23,8 @@ setWeather({
     country:response.data.sys.country,
     icon:`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     descriptione:response.data.weather[0].description,
-    date:new Date(response.data.dt*1000)
+    date:new Date(response.data.dt*1000),
+    coordinates: response.data.coord,
 })
 }
 
@@ -55,6 +58,7 @@ return(
             </div>
         </form>
         <WeatherInfo data={weather}/>
+        <WeatherForecast coordinates={weather.coordinates} />
     </div>
 )}else{
     search(city);
