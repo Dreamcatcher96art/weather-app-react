@@ -19,7 +19,7 @@ setWeather({
     hummidity:response.data.main.humidity,
     city:response.data.name,
     country:response.data.sys.country,
-    icon:response.data.weather[0].icon,
+    icon:`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     descriptione:response.data.weather[0].description,
     date:new Date(response.data.dt*1000)
 })
@@ -27,14 +27,13 @@ setWeather({
 
 function search(){
     const apiKey = "97a9745b0c3a1f932357060a2331ab49";
-    let city = "Gdynia"
-     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 }
 
 function handleSubmit(event){
     event.preventDefault();
-    search(city);
+    search();
 }
 
   function handleCityChange(event) {
@@ -51,7 +50,7 @@ return(
                     <input type="search" className="form-control" autoFocus="on" onChange={handleCityChange}/>
                 </div>
                 <div className="col-3">
-                    <input type="Submit" value="Search" className="btn btn-primary"/>
+                    <input type="submit" value="Search" className="btn btn-primary" />
                 </div>
             </div>
         </form>
