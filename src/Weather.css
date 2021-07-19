@@ -37,3 +37,17 @@
 .Weather li {
   list-style-type: none;
 }
+.Weather hr {
+  color: #7b6079;
+}
+.Weather .bold {
+  font-weight: bold;
+}
+.Weather .min {
+  font-style: italic;
+  opacity: 0.9;
+}
+.Weather .day {
+  font-size: 18px;
+  font-weight: bold;
+}
