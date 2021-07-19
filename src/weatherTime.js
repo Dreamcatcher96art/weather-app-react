@@ -21,8 +21,8 @@ export default function weatcherTime(props) {
     minutes = `0${minutes}`;
   }
   return (
-    <div>
-      {day} {hours}:{minutes}
+    <div className="time">
+      Last update {day}, {hours}:{minutes}
     </div>
   );
 }

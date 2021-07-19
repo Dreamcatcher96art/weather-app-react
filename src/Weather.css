@@ -9,7 +9,8 @@
   font-family: "Uchen", serif;
 }
 .Weather h1 {
-  padding: 20px;
+  padding-top: 20px;
+  margin-bottom: 0;
 }
 .Weather .temp {
   font-size: 40px;
@@ -50,4 +51,7 @@
 .Weather .day {
   font-size: 18px;
   font-weight: bold;
+}
+.Weather #description {
+  font-style: italic;
 }
