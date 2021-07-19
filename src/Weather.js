@@ -21,7 +21,7 @@ setWeather({
     hummidity:response.data.main.humidity,
     city:response.data.name,
     country:response.data.sys.country,
-    icon:`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+    icon:response.data.weather[0].icon,
     descriptione:response.data.weather[0].description,
     date:new Date(response.data.dt*1000),
     coordinates: response.data.coord,
