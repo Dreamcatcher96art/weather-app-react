@@ -25,7 +25,7 @@ return(
     <div>
         <div className="Forecast-day">{day()}</div>
         <div className="Forecast-temperatures">
-        <span className="Forecast-temperature-max">{maxTemp()}</span>
+        <span className="Forecast-temperature-max">{maxTemp()}/</span>
         <span className="Forecast-temperature-min">{minTemp()}</span>
         </div>
     </div>
